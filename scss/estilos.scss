@@ -1,7 +1,3 @@
-@import "_bootstrap";
-@import "compass/css3";
-@import "compass/utilities";
-
 //FUENTES
 /*Hospital Black*/
 @font-face
@@ -9,7 +5,6 @@
     font-family: 'hospital_black';
     src: url('../fonts/hospital/hospital_black.eot');
     src: url('../fonts/hospital/hospital_black.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/hospital/hospital_black.woff') format('woff'),
          url('../fonts/hospital/hospital_black.ttf') format('truetype'),
          url('../fonts/hospital/hospital_black.svg#hospital_black') format('svg');
     font-weight: bolder;
@@ -21,7 +16,6 @@
     font-family: 'hospital_bold';
     src: url('../fonts/hospital/hospital_bold.eot');
     src: url('../fonts/hospital/hospital_bold.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/hospital/hospital_bold.woff') format('woff'),
          url('../fonts/hospital/hospital_bold.ttf') format('truetype'),
          url('../fonts/hospital/hospital_bold.svg#hospital_bold') format('svg');
     font-weight: bold;
@@ -33,7 +27,6 @@
     font-family: 'hospital_medium';
     src: url('../fonts/hospital/hospital_medium.eot');
     src: url('../fonts/hospital/hospital_medium.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/hospital/hospital_medium.woff') format('woff'),
          url('../fonts/hospital/hospital_medium.ttf') format('truetype'),
          url('../fonts/hospital/hospital_medium.svg#hospital_medium') format('svg');
     font-weight: normal;
@@ -45,7 +38,6 @@
     font-family: 'hospital_regular';
     src: url('../fonts/hospital/hospital_regular.eot');
     src: url('../fonts/hospital/hospital_regular.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/hospital/hospital_regular.woff') format('woff'),
          url('../fonts/hospital/hospital_regular.ttf') format('truetype'),
          url('../fonts/hospital/hospital_regular.svg#hospital_regular') format('svg');
     font-weight: lighter;
@@ -417,8 +409,8 @@ p, h1, h2, h3, h4, h5, h6, span
         width: 100vw;
         height: 95vh;
         padding-top: 6rem;
-        padding-left: 2rem;
-        padding-right: 2rem;
+        padding-left: 0rem;
+        padding-right: 0rem;
         overflow-x: hidden;
         h1, h2
         {
@@ -436,6 +428,8 @@ p, h1, h2, h3, h4, h5, h6, span
             align: center;
             transform: uppercase;
           }
+          margin-right: 1rem;
+          margin-left: 1rem;
           @include sombra_texto;
           @media #{$sm}
           {
@@ -458,11 +452,15 @@ p, h1, h2, h3, h4, h5, h6, span
           }
           @include sombra_texto;
           margin-top: 0.5rem;
+          margin-right: 1rem;
+          margin-left: 1rem;
         }
         p 
         {
           display: block;
-          background-color: rgba($blanco, 0.25);
+          margin-right: 1rem;
+          margin-left: 1rem;
+          background-color: rgba($blanco, 0.5);
           color: $negro;
           padding: 1rem;
           font:
@@ -571,11 +569,13 @@ p, h1, h2, h3, h4, h5, h6, span
   align-content: center;
   justify-content: space-between;
   margin-top: 5vh;
-  padding: 0rem 3rem 0rem 3rem;
+  padding: 0rem 3rem 0rem 0rem;
+  margin-left: 1rem;
   @media #{$sm}
   {
     justify-content: center;
     flex-direction: column;
+    margin-left: 0rem;
   }
   article 
   {
@@ -604,7 +604,12 @@ p, h1, h2, h3, h4, h5, h6, span
     &:nth-of-type(3)
     {
       background-image: url(../img/showcase_3.png);
-      background-position: bottom;
+      background-position: top;
+      margin-right: 2rem;
+      @media #{$sm}
+      {
+        margin-right: 0;
+      }
     }
     @media #{$sm}
     {
@@ -650,7 +655,7 @@ p, h1, h2, h3, h4, h5, h6, span
     background-image: url(../img/bg_photo.png);
     background-size: cover;
     background-repeat: no-repeat;
-    background-blend-mode: hard-light;
+    background-blend-mode: darken;
     display: flex;
     height: 500px;
     width: 100vw;
@@ -675,6 +680,8 @@ p, h1, h2, h3, h4, h5, h6, span
         align: center;
         transform: uppercase;
       }
+      margin-right: 1rem;
+      margin-left: 1rem;
       @include sombra_texto;
       @media #{$sm}
       {
@@ -683,6 +690,8 @@ p, h1, h2, h3, h4, h5, h6, span
     }
     p
     {
+      margin-right: 1rem;
+      margin-left: 1rem;
       display: block;
       color: $blanco;
       font:
@@ -749,21 +758,31 @@ p, h1, h2, h3, h4, h5, h6, span
       padding: 1rem 0rem 1rem 0rem;
       &:first-of-type
       {
-        text-align: right;
-        padding-right: 6rem;
+        text-align: center;
+        margin-right: -5rem;
         @media #{$sm}
         {
           padding: 0;
+          margin-right: 0;
           text-align: center;
+        }
+      }
+      span 
+      {
+        @media #{$sm}
+        {
+          display: none;
         }
       }
       &:last-of-type
       {
-        text-align: left;
-        padding-left: 6rem;
+        text-align: center;
+        margin-left: -10rem;
         @media #{$sm}
         {
           padding: 0;
+          margin-left: 0;
+          margin-top: -1rem;
           text-align: center;
         }
       }
@@ -789,9 +808,17 @@ p, h1, h2, h3, h4, h5, h6, span
     }
     text-align: center;
     margin-top: 5rem;
+    .neg
+    {
+      font-weight: bolder;
+      color: $verde;
+    }
     @media #{$sm}
     {
       margin-top: 8.5rem;
+      text-align: justify;
+      margin-right: 1rem;
+      margin-left: 1rem;
     }
   }
 }
@@ -802,12 +829,16 @@ p, h1, h2, h3, h4, h5, h6, span
   position: relative;
   width: 100vw;
   min-height: 85vh;
-  margin-top: 10rem;
+  margin-top: 20rem;
   background-color: rgba($celeste, 0.5);
   background-image: url(../img/consulta.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: bottom;
+  @media #{$sm}
+  {
+    margin-top: 40rem;
+  }
   header
   {
     background-color: $verde;
@@ -840,7 +871,7 @@ p, h1, h2, h3, h4, h5, h6, span
     flex-wrap: nowrap;
     align-content: center;
     align-items: stretch;
-    padding: 4rem 3rem 4rem 3rem;
+    padding: 4rem 3rem 4rem 0rem;
     @media #{$sm}
     {
       padding: 4rem 1rem 4rem 1rem;
@@ -881,11 +912,14 @@ p, h1, h2, h3, h4, h5, h6, span
           border: 3px solid $celeste;
           background-color: $celeste;
           line-height: 4rem;
+          vertical-align: middle;
           text-align: center;
           img 
           {
             width: 2.5rem;
             height: auto;
+            vertical-align: middle;
+            line-height: 4rem;
           }
         }
       }
@@ -905,10 +939,10 @@ p, h1, h2, h3, h4, h5, h6, span
         font:
         {
           family: 'hospital_medium', sans-serif;
-          size: 0.9rem;
+          size: 1.2rem;
           weight: normal;
         }
-        color: $gris;
+        color: $celeste;
         text-transform: uppercase;
         text-align: center;
         margin-bottom: 2rem;
@@ -916,18 +950,26 @@ p, h1, h2, h3, h4, h5, h6, span
       ul 
       {
         display: block;
+        margin-right: 2rem;
+        margin-left: 0rem;
         li 
         {
           display: block;
-          color: $blanco;
+          color: $negro;
           font:
           {
             family: 'hospital_regular', sans-serif;
-            size: 0.8rem;
+            size: 0.6rem;
             weight: lighter;
           }
           text-align: center;
-          @include sombra_texto;
+          margin-bottom: 1rem;
+        }
+        .title
+        {
+          font-weight: bolder;
+          font-size: 0.8rem;
+          margin-bottom: 0.5rem;
         }
       }
     }
@@ -981,6 +1023,10 @@ p, h1, h2, h3, h4, h5, h6, span
     ul
     {
       display: block;
+      @media #{$sm}
+      {
+        margin-right: 1rem;
+      }
       li 
       {
         text-align: right;
@@ -1108,6 +1154,8 @@ p, h1, h2, h3, h4, h5, h6, span
     }
     margin-top: 2rem;
     margin-bottom: 2rem;
+    margin-right: 1rem;
+    margin-left: 1rem;
   }
   form 
   {
@@ -1115,9 +1163,11 @@ p, h1, h2, h3, h4, h5, h6, span
     width: auto;
     position: relative;
     text-align: center;
+    margin-right: 2rem;
+    margin-left: 0rem;
     @media #{$sm}
     {
-      width: 100%;
+      width: 80%;
     }
     .flex 
     {
@@ -1226,6 +1276,8 @@ p, h1, h2, h3, h4, h5, h6, span
 {
   background-color: $blanco;
   padding: 3rem 1rem 0rem 1rem;
+  margin-right: 1rem;
+  margin-left: -1rem;
   text-align: center;
   display: flex;
   width: 100vw;

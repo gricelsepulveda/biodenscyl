@@ -9,6 +9,12 @@
 	],
 "creatorBuild": "25504",
 "files": {
+	"\/.gitignore": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/.gitignore",
+		"oF": 0
+		},
 	"\/.sass-cache\/0274e5bffba30115a57afdd0f9b78984f48e9b80\/_ellipsis.scssc": {
 		"ft": 8192,
 		"oA": 1,
@@ -843,11 +849,27 @@
 		"oAP": "\/.sass-cache\/fa5bcaa24e41ae869bdf685b2056bef1a9ec0811\/_scaffolding.scssc",
 		"oF": 0
 		},
+	"\/_index.html": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/_index.html",
+		"oF": 0
+		},
 	"\/config.rb": {
-		"ft": 131072,
+		"ft": 8192,
 		"oA": 0,
 		"oAP": "\/config.rb",
 		"oF": 0
+		},
+	"\/css\/estilos-min.css": {
+		"aP": 1,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 0,
+		"oAP": "\/css\/estilos-min-min.css",
+		"oF": 0,
+		"oS": 0
 		},
 	"\/css\/estilos.css": {
 		"aP": 1,
@@ -868,6 +890,12 @@
 		"oAP": "\/css\/font-awesome.min-min.css",
 		"oF": 0,
 		"oS": 0
+		},
+	"\/enviar.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/enviar.php",
+		"oF": 0
 		},
 	"\/fonts\/fontawesome-webfont.eot": {
 		"ft": 8192,
@@ -1372,6 +1400,17 @@
 		"oA": 2,
 		"oAP": "\/index.html",
 		"oF": 0
+		},
+	"\/index.slim": {
+		"cmO": 0,
+		"ft": 1024,
+		"llg": 0,
+		"oA": 0,
+		"oAP": "\/index.html",
+		"oF": 0,
+		"oFM": 0,
+		"oS": 1,
+		"rAC": 0
 		},
 	"\/js\/scripts.js": {
 		"ft": 64,
