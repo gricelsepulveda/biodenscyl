@@ -1353,7 +1353,7 @@
 		"oA": 0,
 		"oAP": "\/img\/header.png",
 		"oF": 0,
-		"opt": 0
+		"opt": 1
 		},
 	"\/img\/header2.png": {
 		"ft": 32768,
