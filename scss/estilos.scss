@@ -1,0 +1,1286 @@
+@import "_bootstrap";
+@import "compass/css3";
+@import "compass/utilities";
+
+//FUENTES
+/*Hospital Black*/
+@font-face
+{
+    font-family: 'hospital_black';
+    src: url('../fonts/hospital/hospital_black.eot');
+    src: url('../fonts/hospital/hospital_black.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/hospital/hospital_black.woff') format('woff'),
+         url('../fonts/hospital/hospital_black.ttf') format('truetype'),
+         url('../fonts/hospital/hospital_black.svg#hospital_black') format('svg');
+    font-weight: bolder;
+    font-style: normal;
+}
+/*Hospital Bold*/
+@font-face
+{
+    font-family: 'hospital_bold';
+    src: url('../fonts/hospital/hospital_bold.eot');
+    src: url('../fonts/hospital/hospital_bold.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/hospital/hospital_bold.woff') format('woff'),
+         url('../fonts/hospital/hospital_bold.ttf') format('truetype'),
+         url('../fonts/hospital/hospital_bold.svg#hospital_bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+/*Hospital Medium*/
+@font-face
+{
+    font-family: 'hospital_medium';
+    src: url('../fonts/hospital/hospital_medium.eot');
+    src: url('../fonts/hospital/hospital_medium.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/hospital/hospital_medium.woff') format('woff'),
+         url('../fonts/hospital/hospital_medium.ttf') format('truetype'),
+         url('../fonts/hospital/hospital_medium.svg#hospital_medium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+/*Hospital Regular*/
+@font-face
+{
+    font-family: 'hospital_regular';
+    src: url('../fonts/hospital/hospital_regular.eot');
+    src: url('../fonts/hospital/hospital_regular.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/hospital/hospital_regular.woff') format('woff'),
+         url('../fonts/hospital/hospital_regular.ttf') format('truetype'),
+         url('../fonts/hospital/hospital_regular.svg#hospital_regular') format('svg');
+    font-weight: lighter;
+    font-style: normal;
+}
+
+//BREAKPOINTS GRALES
+$xxs: "(max-width: 340px)";
+$xs: "(max-width: 767px)";
+$sm: "(max-width: 991px)";
+$md: "(max-width: 1199px)";
+$lg: "(min-width: 1200px)";
+// BREAKPOINTS UNICOS
+$xxs_absoluto: "(min-width: 0px) and (max-width: 339px)";
+$xs_absoluto: "(min-width: 340px) and (max-width: 767px)";
+$sm_absoluto: "(min-width: 768px) and (max-width: 991px)";
+$md_absoluto: "(min-width: 992px) and (max-width: 1199px)";
+$lg_absoluto: "(min-width: 1200px)";
+
+//COLORES
+$blanco: #ffffff;
+$negro: #000000;
+$gris: #555454;
+$celeste: #6abab9;
+$verde: #65b688;
+
+//MIXINGS 
+@mixin cero 
+{
+	padding: 0;
+	margin: 0;
+}
+@mixin animar
+{
+   transition: all 0.25s ease-in-out;
+	-webkit-transition: all 0.25s ease-in-out;
+	-moz-transition: all 0.25s ease-in-out;
+}
+@mixin sombra
+{
+ 	-webkit-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.25);
+	-moz-box-shadow:    1px 1px 3px 0px rgba(0, 0, 0, 0.25);
+	box-shadow:         1px 1px 3px 0px rgba(0, 0, 0, 0.25);
+}
+@mixin sombra_oscura
+{
+ 	-webkit-box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.4);
+	-moz-box-shadow:    1px 1px 4px 0px rgba(0, 0, 0, 0.4);
+	box-shadow:         1px 1px 4px 0px rgba(0, 0, 0, 0.4);
+}
+@mixin sombra_texto
+{
+ 	-webkit-text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+	-moz-text-shadow:    1px 1px 2px rgba(0, 0, 0, 0.5);
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+//SCROLLBARS
+::-webkit-scrollbar 
+{
+	width: 10px;
+	@include animar;
+}
+
+::-webkit-scrollbar-track 
+{
+	background: $blanco;
+	@include animar;
+}
+
+.scrollable-content::-webkit-scrollbar * 
+{
+	background: $blanco;
+}
+
+::-webkit-scrollbar-thumb 
+{
+	background: $verde;
+	@include animar;
+}
+
+ 
+//AUX
+html
+{
+	font-size: 20px; //BASE REM
+	@include cero;
+  min-height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+body 
+{
+  padding: 0;
+  margin: 0;
+  min-height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+.no_margen > [class*='col-'] //EVITA MARGENES BOOTSTRAP EN EL PRIMER NIVEL DE LA GRILLA
+{
+	padding-right: 0;
+	padding-left: 0;
+}
+
+button, input, textarea, label, option, figure //LIMPIAR PROPIEDADES PREDETERMINADAS
+{ 
+	box-shadow: none;
+	outline: none;
+	border-radius: 0;
+  border: none;
+	@include cero;
+  &:hover, &:active, &:visited, &:focus
+  {
+    outline: none;
+    border: none;
+  }
+}
+
+ul, li //LIMPIAR PROPIEDADES PRETERMINADAS
+{ 
+	text-indent: none;
+	list-style-type: none;
+	@include cero;
+}
+
+a, a:hover, a:active, a:visited, a:focus //LIMPIAR PROPIEDADES PREDETERMINADAS
+{ 
+	text: 
+	{
+		decoration: inherit;
+		decoration: none;
+	}
+	color: inherit;
+	@include cero;
+}
+
+
+p, h1, h2, h3, h4, h5, h6, span 
+{
+	@include cero;
+	-webkit-text-shadow: none;
+	-moz-text-shadow: none;
+	text-shadow: none;
+	text: 
+	{
+		decoration: inherit;
+		decoration: none;
+	}
+  font:
+  {
+    family: inherit;
+    size: inherit;
+  }
+	color: inherit;
+}
+
+.main_menu
+{
+  background-color: rgba($celeste, 0.9);
+  display: block;
+  width: 100vw;
+  height: auto;
+  position: fixed;
+  z-index: 13;
+  top: 0; 
+  left: 0;
+  @include sombra_oscura;
+  .flex
+  {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    height: auto;
+    padding: 1.25rem 3rem 1.25rem 3rem;
+    @media #{$sm}
+    {
+      justify-content: center;
+      flex-direction: column;
+      padding: 1.25rem 0rem 1.25rem 0rem;
+    }
+    .biodenscyl_logo 
+    {
+      display: block;
+      width: 8.5rem;
+      height: auto;
+      text-align: left;
+      position: relative;
+      margin: 0;
+      img 
+      {
+        width: 100%;
+        height: auto;
+        position: relative;
+      }
+    }
+    .menu_list
+    {
+      display: block;
+      width: auto;
+      height: auto;
+      position: relative;
+      @media #{$sm}
+      {
+        width: 100vw;
+        position: absolute;
+        left: 0;
+        height: 0px;
+        overflow: hidden;
+        top: 5.25rem;
+        margin: 0;
+        padding: 0;
+      }
+      a
+      {
+        display: inline-block;
+        margin-right: 3rem;
+        @media #{$sm}
+        {
+          margin-right: 0;
+        }
+        li 
+        {
+          display: inline-block;
+          color: $blanco;
+          font:
+          {
+            family: 'hospital_regular', sans-serif;
+            size: 0.8rem;
+            weight: lighter;
+          }
+          letter-spacing: 1px;
+          text:
+          {
+            align: left;
+            transform: lowercase;
+          }
+          cursor: pointer;
+          padding-bottom: 0.5rem;
+          &:hover 
+          {
+            border-bottom: 2px solid $verde;
+          }
+          &:last-of-type 
+          {
+            margin-right: 0;
+          }
+          @media #{$sm}
+          {
+            display: block;
+            width: 100vw;
+            background-color: $celeste;
+            text-align: center;
+            padding: 0.5rem 0rem 0.5rem 0rem;
+            border-bottom: 2px solid $celeste;
+            &:hover 
+            {
+              background-color: $blanco;
+              color: $celeste;
+            }
+          }
+        }
+        .active 
+        {
+          border-bottom: 2px solid $blanco;
+        }
+      }
+    }
+  }
+  .border
+  {
+    display: block;
+    margin: 0;
+    background-color: $verde;
+    opacity: 0.8;
+    filter: alpha(opacity=80);
+    height: 0.35rem;
+    width: 100vw;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 14;
+  }
+}
+
+.menu_mobile
+{
+  display: none;
+  width: 2rem;
+  height: 2rem;
+  background-color: $blanco;
+  border: 2px solid $blanco;
+  text-align: center;
+  line-height: 2rem;
+  position: fixed;
+  z-index: 16;
+  top: 1.625rem;
+  right: 1rem;
+  cursor: pointer;
+  border-radius: 2rem;
+  @media #{$sm}
+  {
+    display: block;
+  }
+  @include animar;
+  i
+  {
+    font-size: 1.2rem;
+    color: $celeste;
+    line-height: 1.7rem;
+  }
+  &:hover
+  {
+    background-color: $celeste;
+    i 
+    {
+      color: $blanco;
+    }
+  }
+}
+
+.menu_mobile_active 
+{
+  background-color: $verde;
+  border: 2px solid $verde;
+  i 
+  {
+    color: $blanco;
+  }
+}
+
+#inicio
+{
+  width: 100vw;
+  height: 95vh;
+  background-color: $blanco;
+  overflow-x: hidden;
+}
+
+//SLIDER
+.my-slider
+{
+  width: 100vw;
+  height: 95vh;
+  padding: 0;
+  overflow-x: hidden;
+  ul
+  {
+    overflow-x: hidden;
+    li 
+    {
+      width: 100vw;
+      height: 95vh;
+      overflow-x: hidden;
+      .wrapper 
+      {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        position: relative;
+        width: 100vw;
+        height: 95vh;
+        padding-top: 6rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        overflow-x: hidden;
+        h1, h2
+        {
+          display: block;
+          color: $blanco;
+          font:
+          {
+            family: 'hospital_regular', sans-serif;
+            size: 1.2rem;
+            weight: lighter;
+          }
+          letter-spacing: 10px;
+          text: 
+          {
+            align: center;
+            transform: uppercase;
+          }
+          @include sombra_texto;
+          @media #{$sm}
+          {
+            letter-spacing: 2px;
+          }
+        }
+        span 
+        {
+          display: block;
+          color: $blanco;
+          font:
+          {
+            family: 'hospital_medium', sans-serif;
+            size: 0.9rem;
+            weight: regular;
+          }
+          text:
+          {
+            align: justify;
+          }
+          @include sombra_texto;
+          margin-top: 0.5rem;
+        }
+        p 
+        {
+          display: block;
+          background-color: rgba($blanco, 0.25);
+          color: $negro;
+          padding: 1rem;
+          font:
+          {
+            family: 'hospital_regular', sans-serif;
+            size: 0.7rem;
+            weight: lighter;
+          }
+          margin-top: 1rem;
+          @media #{$sm}
+          {
+            display: none;
+          }
+        }
+        .btn
+        {
+          margin-top: 4rem;
+          background-color: $verde;
+          color: $blanco;
+          border: 3px solid $blanco;
+          padding: 1rem 3rem 1rem 3rem;
+          border-radius: 20rem;
+          font:
+          {
+            family: 'hospital_black', sans-serif;
+            size: 0.6rem;
+            weight: bolder;
+          }
+          letter-spacing: 4px;
+          text: 
+          {
+            transform: uppercase;
+            align: center;
+          }
+          @include animar;
+          @include sombra_oscura;
+          &:hover
+          {
+            background-color: darken($verde, 10%);
+            border: 3px solid darken($verde, 10%);
+          }
+        }
+      }
+    }
+    .uno
+    {
+      background:
+      {
+        image: url(../img/header.png);
+        size: cover;
+        position: bottom;
+        repeat: no-repeat;
+      }
+    }
+    .dos
+    {
+      background:
+      {
+        image: url(../img/header2.png);
+        size: 100% auto;
+        position: top;
+        repeat: no-repeat;
+      }
+      @media #{$sm}
+      {
+        background:
+        {
+          size: cover;
+          position: bottom;
+        }
+      }
+    }
+    .tres
+    {
+      background:
+      {
+        image: url(../img/header3.png);
+        size: 100% auto;
+        position: top;
+        repeat: no-repeat;
+      }
+      @media #{$sm}
+      {
+        background:
+        {
+          size: cover;
+          position: bottom;
+        }
+      }
+    }
+  }
+}
+
+.unslider
+{
+  overflow-x: hidden!important;
+}
+
+//SHOWCASE 
+.showcase
+{
+  display: flex;
+  width: 100vw;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: space-between;
+  margin-top: 5vh;
+  padding: 0rem 3rem 0rem 3rem;
+  @media #{$sm}
+  {
+    justify-content: center;
+    flex-direction: column;
+  }
+  article 
+  {
+    display: block;
+    width: 30%;
+    height: 9.5rem;
+    background-color: $blanco;
+    position: relative;
+    z-index: 12;
+    background: 
+    {
+      size: cover;
+      repeat: no-repeat;
+    }
+    overflow: hidden;
+    border-radius: 0rem 0rem 0.5rem 0.5rem;
+    &:nth-of-type(1)
+    {
+      background-image: url(../img/showcase_1.png);
+    }
+    &:nth-of-type(2)
+    {
+      background-image: url(../img/showcase_2.png);
+      background-position: bottom;
+    }
+    &:nth-of-type(3)
+    {
+      background-image: url(../img/showcase_3.png);
+      background-position: bottom;
+    }
+    @media #{$sm}
+    {
+      margin-bottom: 2rem;
+      width: 90%;
+      &:last-of-type
+      {
+        margin-bottom: 0;
+      }
+    }
+    p 
+    {
+      display: block;
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      background-color: rgba($celeste, 0.8);
+      color: $blanco;
+      font:
+      {
+        family: 'hospital_regular', sans-serif;
+        size: 0.6rem;
+        weight: lighter;
+      }
+      text-align: center;
+      padding: 0.25rem 0.5rem 0.25rem 0.5rem;
+    }
+  }
+}
+
+#nosotros 
+{
+  margin-top: -1.33rem;
+  background-color: $blanco;
+  display: block;
+  position: relative;
+  z-index: 0;
+  width: 100vw;
+  header
+  {
+    background-color: $verde;
+    background-image: url(../img/bg_photo.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: hard-light;
+    display: flex;
+    height: 500px;
+    width: 100vw;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    h3 
+    {
+      display: block;
+      color: $blanco;
+      font:
+      {
+        family: 'hospital_regular', sans-serif;
+        size: 1.8rem;
+        weight: lighter;
+      }
+      letter-spacing: 10px;
+      text: 
+      {
+        align: center;
+        transform: uppercase;
+      }
+      @include sombra_texto;
+      @media #{$sm}
+      {
+        letter-spacing: 2px;
+      }
+    }
+    p
+    {
+      display: block;
+      color: $blanco;
+      font:
+      {
+        family: 'hospital_regular', sans-serif;
+        size: 0.9rem;
+        weight: lighter;
+      }
+      text-align: center;
+      margin-top: 1rem;
+    }
+    figure 
+    {
+      background-color: $blanco;
+      width: 10rem;
+      height: 10rem;
+      border-radius: 10rem;
+      text-align: center;
+      border: 5px solid $blanco;
+      position: absolute;
+      bottom: -5rem;
+      background:
+      {
+        image: url(../img/doctor.png);
+        size: cover;
+        repeat: no-repeat;
+        position: center;
+      }
+      @media #{$sm}
+      {
+        align-self: center;
+      }
+    }
+  }
+  .flex 
+  {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    padding: 0rem 1rem 0rem 1rem;
+    width: 100vw;
+    @media #{$sm}
+    {
+      position: absolute;
+      justify-content: center;
+      flex-direction: column;
+      align-content: center;
+      align-items: center;
+      top: 620px;
+    }
+    p 
+    {
+      display: block;
+      width: 50%;
+      font:
+      {
+        family: 'hospital_medium', sans-serif;
+        size: 1rem;
+        weight: normal;
+      }
+      color: $gris;
+      text-transform: uppercase;
+      padding: 1rem 0rem 1rem 0rem;
+      &:first-of-type
+      {
+        text-align: right;
+        padding-right: 6rem;
+        @media #{$sm}
+        {
+          padding: 0;
+          text-align: center;
+        }
+      }
+      &:last-of-type
+      {
+        text-align: left;
+        padding-left: 6rem;
+        @media #{$sm}
+        {
+          padding: 0;
+          text-align: center;
+        }
+      }
+      @media #{$sm}
+      {
+        width: 100%;
+        padding: 0rem;
+        text-align: center;
+      }
+    }
+  }
+  .description
+  {
+    display: block;
+    color: $negro;
+    position: absolute;
+    padding: 1rem;
+    font:
+    {
+      family: 'hospital_regular', sans-serif;
+      size: 0.7rem;
+      weight: lighter;
+    }
+    text-align: center;
+    margin-top: 5rem;
+    @media #{$sm}
+    {
+      margin-top: 8.5rem;
+    }
+  }
+}
+
+#servicios, .servicios
+{
+  display: block;
+  position: relative;
+  width: 100vw;
+  min-height: 85vh;
+  margin-top: 10rem;
+  background-color: rgba($celeste, 0.5);
+  background-image: url(../img/consulta.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+  header
+  {
+    background-color: $verde;
+    color: $blanco;
+    @media #{$sm}
+    {
+      margin-top: 20rem;
+    }
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    font:
+    {
+      family: 'hospital_regular', sans-serif;
+      size: 0.9rem;
+      weight: lighter;
+    }
+    letter-spacing: 4px;
+    text:
+    {
+      align: center;
+      transform: uppercase;
+    }
+  }
+  .flex 
+  {
+    display: flex;
+    width: 100vw;
+    height: auto;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    align-content: center;
+    align-items: stretch;
+    padding: 4rem 3rem 4rem 3rem;
+    @media #{$sm}
+    {
+      padding: 4rem 1rem 4rem 1rem;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+    }
+    article 
+    {
+      display: block;
+      padding: 2rem;
+      background-color: rgba($blanco, 0.5);
+      width: 40%;
+      height: auto;
+      position: relative;
+      .cnt 
+      {
+        display: flex;
+        position: absolute;
+        top: -2.75rem;
+        left: 0rem;
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        @media #{$sm}
+        {
+          margin-top: -1rem;
+          top: -1.75rem;
+        }
+        figure 
+        {
+          display: block;
+          width: 4rem;
+          height: 4rem;
+          border-radius: 4rem;
+          border: 3px solid $celeste;
+          background-color: $celeste;
+          line-height: 4rem;
+          text-align: center;
+          img 
+          {
+            width: 2.5rem;
+            height: auto;
+          }
+        }
+      }
+      @media #{$sm}
+      {
+        width: 100%;
+        margin-bottom: 4rem;
+        &:last-of-type
+        {
+          margin-bottom: 0rem;
+        }
+      }
+      h3 
+      {
+        display: block;
+        padding: 0rem 1rem 0rem 1rem;
+        font:
+        {
+          family: 'hospital_medium', sans-serif;
+          size: 0.9rem;
+          weight: normal;
+        }
+        color: $gris;
+        text-transform: uppercase;
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+      ul 
+      {
+        display: block;
+        li 
+        {
+          display: block;
+          color: $blanco;
+          font:
+          {
+            family: 'hospital_regular', sans-serif;
+            size: 0.8rem;
+            weight: lighter;
+          }
+          text-align: center;
+          @include sombra_texto;
+        }
+      }
+    }
+  }
+}
+
+#map 
+{
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+  align-content: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  background-color: $blanco;
+  padding: 3rem 1rem 3rem 1rem;
+  width: 100vw;
+  @media #{$sm}
+  {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  article
+  {
+    display: block;
+    width: 40%;
+    margin-right: 0.5rem;
+    @media #{$sm}
+    {
+      width: 100%;
+      margin-right: 0;
+      margin-bottom: 1rem;
+    }
+    span 
+    {
+      display: block;
+      text-align: right;
+      margin-bottom: 1rem;
+      font:
+      {
+        family: 'hospital_bold', sans-serif;
+        weight: bold;
+        size: 0.8rem;
+      }
+      @media #{$sm}
+      {
+        text-align: center;
+      }
+    }
+    ul
+    {
+      display: block;
+      li 
+      {
+        text-align: right;
+        display: block;
+        color: $gris;
+        margin-bottom: 0.25rem;
+        font:
+        {
+          family: 'hospital_regular', sans-serif;
+          weight: lighter;
+          size: 0.75rem;
+        }
+        &:last-of-type
+        {
+          margin-bottom: 0rem;
+        }
+        @media #{$sm}
+        {
+          text-align: center;
+        }
+        i 
+        {
+          color: $verde;
+          margin-right: 0.25rem;
+        }
+        a 
+        {
+          cursor: pointer;
+          @media #{$sm}
+          {
+            color: $verde;
+          }
+          &:hover
+          {
+            text-decoration: underline;
+          }
+        }
+      }
+      .bolder 
+      {
+        font:
+        {
+          family: 'hospital_medium', sans-serif;
+          weight: regular;
+        }
+      }
+    }
+  }
+  aside 
+  {
+    display: block;
+    width: 60%;
+    margin-left: 0.5rem;
+    @media #{$sm}
+    {
+      width: 100%;
+      margin-left: 0rem;
+      height: 300px;
+    }
+    .cnt_mapa
+    {
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      height: 100%;
+      position: relative;
+      margin-top: 0rem;
+      overflow: hidden;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+      flex-wrap: nowrap;
+    }
+    .google-maps
+    {
+      position: relative;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      iframe
+      {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        height: 100% !important;
+      }
+    }
+  }
+}
+
+#contact
+{
+  display: flex;
+  width: 100vw;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-wrap: nowrap;
+  padding: 1rem;
+  background:
+  {
+    color: $blanco;
+    image: url(../img/bg.svg);
+    size: cover;
+    repeat: repeat-x;
+    position: center;
+  }
+  h3 
+  {
+    color: $verde;
+    font:
+    {
+      family: 'hospital_regular', sans-serif;
+      size: 1rem;
+      weight: lighter;
+    }
+    letter-spacing: 4px;
+    text:
+    {
+      align: center;
+      transform: uppercase;
+    }
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  form 
+  {
+    display: block;
+    width: auto;
+    position: relative;
+    text-align: center;
+    @media #{$sm}
+    {
+      width: 100%;
+    }
+    .flex 
+    {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      align-content: center;
+      align-items: center;
+      margin-bottom: 1rem;
+      @media #{$sm}
+      {
+        flex-direction: column;
+        justify-content: center;
+      }
+      label 
+      {
+        display: block;
+        width: 100px;
+        color: $negro;
+        font:
+        {
+          family: 'hospital_regular', sans-serif;
+          size: 0.7rem;
+          weight: lighter;
+        }
+        text-align: right;
+        margin-right: 0.5rem;
+        @media #{$sm}
+        {
+          width: auto;
+          text-align: center;
+          margin-right: 0;
+          margin-top: 1rem;
+        }
+      }
+      input, textarea
+      {
+        border: 1px solid $gris;
+        outline: none;
+        box-shadow: none;
+        border-radius: 0;
+        width: 400px;
+        height: 2rem;
+        font:
+        {
+          family: 'hospital_regular', sans-serif;
+          size: 0.7rem;
+          weight: lighter;
+        }
+        text-align: left;
+        color: $gris;
+        line-height: 2rem;
+        padding: 0rem 1rem 0rem 1rem;
+        @include animar;
+        &:active, &:focus, &:hover
+        {
+          border: 1px solid $verde;
+        }
+        @media #{$sm}
+        {
+          width: 95%;
+          margin-top: 0.5rem;
+        }
+      }
+      textarea
+      {
+        height: inherit;
+      }
+    }
+    .btn 
+    {
+      display: inline-block;
+      margin: 0 auto;
+      position: relative;
+      margin-top: 2rem;
+      background-color: $verde;
+      color: $blanco;
+      border: 3px solid $blanco;
+      padding: 1rem 3rem 1rem 3rem;
+      border-radius: 20rem;
+      font:
+      {
+        family: 'hospital_black', sans-serif;
+        size: 0.6rem;
+        weight: bolder;
+      }
+      letter-spacing: 4px;
+      text: 
+      {
+        transform: uppercase;
+        align: center;
+      }
+      @include animar;
+      @include sombra_oscura;
+      &:hover
+      {
+        background-color: darken($verde, 10%);
+        border: 3px solid darken($verde, 10%);
+      }
+    }
+  }
+}
+
+.footer
+{
+  background-color: $blanco;
+  padding: 3rem 1rem 0rem 1rem;
+  text-align: center;
+  display: flex;
+  width: 100vw;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  img 
+  {
+    display: inline;
+    width: 14rem;
+    height: auto;
+    cursor: pointer;
+    margin-bottom: 3rem;
+  }
+  > span 
+  {
+    display: block;
+    padding: 0.25rem;
+    cursor: pointer;
+    color: rgba($gris, 0.25);
+    font:
+      {
+        family: 'hospital_regular', sans-serif;
+        size: 0.5rem;
+        weight: ligher;
+      }
+    text-align: center;
+    > a
+    {
+      color: $verde;
+      text-transform: uppercase;
+    }
+    .negrita
+    {
+      color: rgba($gris, 0.5);
+      @include animar;
+      &:hover
+      {
+        color: $verde;
+      }
+    }
+  }
+  .cc
+  {
+    display: block;
+    width: 50px;
+  }
+}
+
+
+
+
+
+
+
+
